@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiEnterpriseDemo.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,7 +30,7 @@ namespace ApiEnterpriseDemo
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -42,6 +43,17 @@ namespace ApiEnterpriseDemo
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            if (!context.Enterprises.Any())
+            {
+                context.Enterprises.AddRange(new List<Enterprise>()
+                {
+                    new Enterprise(){Name = "Microsoft", Cuit = 11111111111},
+                    new Enterprise(){Name = "Google", Cuit = 22222222222},
+                    new Enterprise(){Name = "Oracle", Cuit = 33333333333}
+                });
+                context.SaveChanges();
+            }
         }
     }
 }
