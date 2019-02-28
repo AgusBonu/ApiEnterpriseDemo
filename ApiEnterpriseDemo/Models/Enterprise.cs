@@ -14,5 +14,6 @@ namespace ApiEnterpriseDemo.Models
         [Required]
         [Range(11111111111, 99999999999)]
         public long Cuit { get; set; }
+        public List<Employee> Employees { get; set; }
     }
 }

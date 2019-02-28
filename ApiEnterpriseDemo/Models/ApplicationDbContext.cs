@@ -11,5 +11,6 @@ namespace ApiEnterpriseDemo.Models
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Enterprise> Enterprises { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }
