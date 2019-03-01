@@ -57,8 +57,15 @@ namespace ApiEnterpriseDemo
             {
                 context.Enterprises.AddRange(new List<Enterprise>()
                 {
-                    new Enterprise(){Name = "Microsoft", Cuit = 11111111111},
-                    new Enterprise(){Name = "Google", Cuit = 22222222222},
+                    new Enterprise(){Name = "Microsoft", Cuit = 11111111111, Employees = new List<Employee>(){
+                        new Employee(){Name = "Employee 1"}
+                    }
+                    },
+                    new Enterprise(){Name = "Google", Cuit = 22222222222, Employees = new List<Employee>(){
+                        new Employee(){Name = "Employee 1"},
+                        new Employee(){Name = "Employee 2"},
+                        new Employee(){Name = "Employee 3"}
+                    }},
                     new Enterprise(){Name = "Oracle", Cuit = 33333333333}
                 });
                 context.SaveChanges();
